@@ -1,0 +1,49 @@
+﻿<Page x:Class="ScriptForSeconds.Views.ClientAddView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ScriptForSeconds.Views"
+      xmlns:viewModels="clr-namespace:ScriptForSeconds.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ClientAddView">
+    <Page.DataContext>
+        <viewModels:ClientAddViewModel/>
+    </Page.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350">
+            <TextBlock Text="Имя" Margin="2,4,2,4"/>
+            <TextBox Text="{Binding SelectedClient.FirstName}" Margin="2,4,2,4"/>
+
+            <TextBlock Text="Фамилия" Margin="2,4,2,4"/>
+            <TextBox Text="{Binding SelectedClient.LastName}" Margin="2,4,2,4"/>
+
+            <TextBlock Text="Отчество" Margin="2,4,2,4"/>
+            <TextBox Text="{Binding SelectedClient.Patronymic}" Margin="2,4,2,4"/>
+
+            <TextBlock Text="Дата рождения" Margin="2,4,2,4"/>
+            <DatePicker SelectedDate="{Binding SelectedClient.Birthday}" Margin="2,4,2,4"/>
+
+            <TextBlock Text="Дата регистрации" Margin="2,4,2,4"/>
+            <DatePicker SelectedDate="{Binding SelectedClient.RegistrationDate}" Margin="2,4,2,4"/>
+
+            <TextBlock Text="Почта" Margin="2,4,2,4"/>
+            <TextBox Text="{Binding SelectedClient.Email}" Margin="2,4,2,4"/>
+            
+            <TextBlock Text="Телефон" Margin="2,4,2,4"/>
+            <TextBox Text="{Binding SelectedClient.Phone}" Margin="2,4,2,4"/>
+
+            <TextBlock Text="Пол" Margin="2,4,2,4"/>
+            <ComboBox ItemsSource="{Binding GenderCode}" SelectedItem="{Binding SelectedClient.GenderCode}" DisplayMemberPath="Name" Margin="2" IsEditable="True"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Сохранить" Padding="7" Margin="0,0,10,0" Width="100" Command="{Binding SaveBtn}"/>
+            <Button Content="Отменяй, дед" Padding="7" Margin="10,0,0,0" Width="100" Command="{Binding CancelBtn}"/>
+        </StackPanel>
+    </Grid>
+</Page>
